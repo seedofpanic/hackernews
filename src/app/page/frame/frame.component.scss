@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header, .footer {
+  flex: 0 0 auto;
+}
+
+.content {
+  flex: 1 1 100%;
+  overflow: auto;
+}

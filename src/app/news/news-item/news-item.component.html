@@ -1,0 +1,31 @@
+<mat-card *ngIf="item">
+  <mat-card-title>
+    <mat-icon class="cross"
+              (click)="hideItem()"
+              aria-hidden="false"
+              aria-label="Hide this item">clear
+    </mat-icon>
+    <mat-icon class="like"
+              [class.liked]="liked"
+              (click)="setLiked()"
+              aria-hidden="false"
+              aria-label="Like this item">thumb_up
+    </mat-icon>
+    <span class="title-text">
+      {{item.title}} <span *ngIf="item.url | takeDomen">(<a [attr.href]="item.url">{{item.url | takeDomen}}</a>)</span>
+    </span>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <span class="subtitle-text">
+      {{item.score}}&nbsp;points, by&nbsp;<a href="#">{{item.by}}</a>, {{item.time | fromNow}} |
+      <a href="#">{{item.kids?.length}}&nbsp;{{item.kids?.length === 1 ? 'comment' : 'comments'}}</a>
+    </span>
+  </mat-card-subtitle>
+  <mat-card-content *ngIf="item.text?.trim() && !showMore">
+    <a (click)="toggleMore()" mat-button class="more-button">Read more</a>
+  </mat-card-content>
+  <mat-card-content *ngIf="showMore">
+    <div [innerHTML]="item.text" class="more-text"></div>
+    <a (click)="toggleMore()" mat-button class="less-button">Hide more</a>
+  </mat-card-content>
+</mat-card>

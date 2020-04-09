@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.like {
+  vertical-align: sub;
+  cursor: pointer;
+  user-select: none;
+
+  &.liked {
+    color: green;
+  }
+}
+
+.cross {
+  float: right;
+  cursor: pointer;
+  user-select: none;
+}
